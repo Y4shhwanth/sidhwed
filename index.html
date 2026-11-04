@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full antialiased dark selection:bg-[#c8a830]/20 selection:text-[#c8a830] overflow-x-hidden max-w-[100vw]">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>Subha &amp; Sidharth's Wedding Invitation | Guruvayur Ambala Nada, Kerala</title>
+  <meta name="description" content="You're cordially invited to celebrate the wedding of Subha &amp; Sidharth — Wednesday, 11 November 2026 at Guruvayur Ambala Nada, Guruvayur, Kerala."/>
+  <link rel="icon" href="assets/logo.png" type="image/png"/>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&family=Raleway:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'kb-gold': '#c8a830',
+            'kb-cream': '#f8f4e4',
+            'kb-ivory': '#f4edd0',
+            'kb-sage': '#4a8a6a',
+            'kb-deep': '#0e2218',
+            'kb-coral': '#2e6b4a'
+          },
+          fontFamily: {
+            serif: ['"EB Garamond"', '"Cormorant Garamond"', 'serif'],
+            sans: ['Raleway', 'Montserrat', 'sans-serif'],
+            script: ['"Great Vibes"', 'cursive']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- GSAP & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+  <!-- Official Template CSS -->
+  <link rel="stylesheet" href="assets/css/kerala-backwaters.css"/>
+
+  <style>
+    :root {
+      --font-cormorant: 'Cormorant Garamond', serif;
+      --font-eb: 'EB Garamond', serif;
+      --font-raleway: 'Raleway', sans-serif;
+      --sat: env(safe-area-inset-top, 0px);
+      --sab: env(safe-area-inset-bottom, 0px);
+      --sal: env(safe-area-inset-left, 0px);
+      --sar: env(safe-area-inset-right, 0px);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      background-color: var(--kb-cream);
+      color: var(--kb-deep);
+      font-family: var(--font-raleway);
+      overflow-x: hidden !important;
+      max-width: 100vw !important;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      -webkit-font-smoothing: antialiased;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Auto Dismiss Preloader */
+    @keyframes autoDismissPreloader {
+      0%, 75% { opacity: 1; pointer-events: auto; }
+      100% { opacity: 0; pointer-events: none; visibility: hidden; }
+    }
+    .kb-preloader {
+      animation: autoDismissPreloader 2.4s forwards ease-in-out;
+      cursor: pointer;
+    }
+    .kb-preloader.away {
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+      display: none !important;
+    }
+
+    /* Full-width Responsive Containers */
+    .kb-container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-left: clamp(16px, 4vw, 32px);
+      padding-right: clamp(16px, 4vw, 32px);
+      box-sizing: border-box;
+    }
+
+    /* Sparks & Ambient Canvases */
+    .kb-ls-sparks {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 5;
+    }
+    .kb-jasmine-canvas-el {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* 3D Video Parallax Stage */
+    .kb-hero-video-stage {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      perspective: 1200px;
+      background: #06120b;
+    }
+    .kb-hero-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      will-change: transform;
+      transform-origin: center center;
+      transform: perspective(1000px) scale(1.02);
+      filter: brightness(0.92) contrast(1.04);
+    }
+    .kb-hero-video-gradient {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(14, 34, 24, 0.25) 0%, rgba(8, 20, 14, 0.85) 100%);
+      pointer-events: none;
+    }
+
+    .kb-hero-copy {
+      pointer-events: auto;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 16px;
+      box-sizing: border-box;
+    }
+    .kb-hero-wrap {
+      height: 140vh;
+      width: 100%;
+    }
+    @media (max-width: 767px) {
+      .kb-hero-wrap {
+        height: 125vh;
+      }
+    }
+
+    .kb-hc-motto {
+      font-family: var(--font-eb);
+      font-style: italic;
+      font-size: clamp(0.95rem, 2.4vw, 1.35rem);
+      color: #F4EDD0;
+      margin: 8px 0 12px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.9);
+      letter-spacing: 0.5px;
+    }
+    .kb-hc-date-card {
+      display: inline-flex;
+      align-items: center;
+      gap: clamp(10px, 3vw, 18px);
+      background: rgba(14, 34, 24, 0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(200, 168, 48, 0.65);
+      border-radius: 14px;
+      padding: clamp(10px, 2.5vw, 14px) clamp(14px, 3vw, 24px);
+      margin-top: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+      max-width: 95%;
+      box-sizing: border-box;
+    }
+    .kb-hc-cal-box {
+      border-right: 1px solid rgba(200, 168, 48, 0.4);
+      padding-right: clamp(10px, 2.5vw, 16px);
+      text-align: center;
+      flex-shrink: 0;
+    }
+    .kb-hc-cal-day {
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      color: #C8A830;
+      display: block;
+      font-weight: 700;
+    }
+    .kb-hc-cal-num {
+      font-family: var(--font-eb);
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      color: #FFFFFF;
+      line-height: 1;
+      font-weight: 700;
+      display: block;
+    }
+    .kb-hc-cal-month {
+      font-size: 0.75rem;
+      letter-spacing: 1.5px;
+      color: #FFD700;
+      display: block;
+      font-weight: 600;
+    }
+    .kb-hc-loc-box {
+      text-align: left;
+    }
+    .kb-hc-time-badge {
+      font-size: 0.78rem;
+      color: #C8A830;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .kb-hc-venue-title {
+      font-family: var(--font-eb);
+      font-size: clamp(0.95rem, 2.5vw, 1.2rem);
+      color: #FFFFFF;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+    }
+    .kb-hc-venue-sub {
+      font-size: 0.76rem;
+      color: #eeddbb;
+    }
+    .kb-hc-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+    .kb-hc-btn-card {
+      background: linear-gradient(135deg, #c8a830 0%, #a88820 100%);
+      color: #0e2218;
+      font-family: var(--font-raleway);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 11px 22px;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .kb-hc-btn-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(200, 168, 48, 0.5);
+    }
+    .kb-hc-btn-map {
+      background: rgba(14, 34, 24, 0.85);
+      border: 1px solid #c8a830;
+      color: #f4edd0;
+      font-family: var(--font-raleway);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 11px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .kb-hc-btn-map:hover {
+      background: #c8a830;
+      color: #0e2218;
+    }
+
+    /* Nilavilakku Lamp Stage */
+    .kb-lamp-stage {
+      padding-top: clamp(48px, 8vw, 80px);
+      padding-bottom: clamp(48px, 8vw, 80px);
+    }
+    .kb-lamp-couple {
+      position: relative;
+      z-index: 3;
+      max-width: 380px;
+      width: 90%;
+      margin: 0 auto 48px;
+      border: 2px solid rgba(200, 168, 48, 0.65);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45), 0 0 40px rgba(200, 168, 48, 0.2);
+      transform-style: preserve-3d;
+      transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
+    }
+    .kb-lamp-couple img {
+      width: 100%;
+      height: clamp(340px, 50vh, 500px);
+      object-fit: cover;
+      object-position: center 18%;
+      display: block;
+    }
+    .kb-lamp-couple-caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 18px 16px 14px;
+      background: linear-gradient(transparent, rgba(8, 20, 14, 0.88));
+      color: #f4edd0;
+      font-family: var(--font-eb);
+      font-style: italic;
+      font-size: 1.15rem;
+      text-align: center;
+    }
+
+    /* Invitation Card Styling */
+    .kb-invite-card {
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: clamp(28px, 5vw, 56px) clamp(16px, 4vw, 44px) !important;
+      box-sizing: border-box;
+    }
+
+    /* Single Event Card */
+    .kb-single-event {
+      max-width: 680px;
+      width: 100%;
+      margin: 0 auto;
+      box-sizing: border-box;
+    }
+    .kb-single-event .kb-ev-card {
+      width: 100%;
+      opacity: 1 !important;
+      transform: none !important;
+      text-align: center;
+    }
+    .kb-single-event .kb-ev-icon-container {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .kb-single-event .kb-ev-links {
+      justify-content: center;
+    }
+
+    /* =========================================================================
+       3D SCROLL VIEW FOR COUPLE PORTRAITS (ALL 7 PHOTOS)
+       ========================================================================= */
+    .kb-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: clamp(16px, 3vw, 28px);
+      width: 100%;
+      perspective: 1200px;
+      margin-top: 36px;
+      box-sizing: border-box;
+    }
+
+    .kb-gal-item {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      will-change: transform;
+      transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.45s ease, filter 0.45s ease;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25), 0 0 15px rgba(200, 168, 48, 0.15);
+      cursor: zoom-in;
+      background: #0e2218;
+    }
+
+    .kb-gal-item:hover {
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.45), 0 0 25px rgba(200, 168, 48, 0.35);
+      z-index: 10;
+    }
+
+    .kb-gal-item--wide {
+      grid-column: span 2;
+    }
+
+    @media (max-width: 680px) {
+      .kb-gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .kb-gal-item--wide {
+        grid-column: span 1;
+      }
+    }
+
+    /* Things to Know Grid */
+    .kb-things-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: clamp(16px, 3vw, 24px);
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* HD Lightbox */
+    .kb-lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 12000;
+      background: rgba(8, 16, 12, 0.94);
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .kb-lightbox.active { display: flex; }
+    .kb-lightbox img {
+      max-width: min(92vw, 980px);
+      max-height: 88vh;
+      object-fit: contain;
+      border-radius: 10px;
+      border: 1px solid rgba(200, 168, 48, 0.4);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    }
+
+    /* Card Modal (Printed Invitation) */
+    .kb-modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(14, 34, 24, 0.9);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 10000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .kb-modal-backdrop.active {
+      display: flex;
+    }
+    .kb-modal-box {
+      background: linear-gradient(180deg, #FAF7F2 0%, #F5EFE6 100%);
+      border: 2px solid #C8A830;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 900px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: clamp(18px, 4vw, 28px);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(200, 168, 48, 0.25);
+      position: relative;
+    }
+
+    /* Full Component Completeness on Mobile & Landscape */
+    @media (max-width: 768px) {
+      .kb-story-section {
+        overflow: hidden;
+      }
+      .kb-st-stage {
+        height: auto !important;
+        min-height: 520px !important;
+        padding: 44px 16px !important;
+        position: relative;
+      }
+      .kb-st-reveal {
+        position: relative !important;
+        inset: auto !important;
+        padding: 0 !important;
+      }
+      .kb-st-content-box {
+        padding: 28px 18px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        background: rgba(248, 244, 228, 0.9) !important;
+      }
+      .kb-st-figure {
+        opacity: 0.18 !important;
+        height: 280px !important;
+        pointer-events: none !important;
+      }
+      .kb-st-bride { left: -20px !important; }
+      .kb-st-groom { right: -20px !important; }
+      .kb-st-curt { display: none !important; }
+    }
+</style>
+</head>
+<body class="kb-body min-h-full flex flex-col overflow-x-hidden max-w-[100vw]">
+
+<div class="kb-preloader"><div class="kb-pl-content"><div class="kb-pl-mandala-wrap"><svg class="kb-pl-mandala" viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" fill="none" stroke="#C8A830" stroke-width="1" stroke-dasharray="314" stroke-dashoffset="0"></circle><circle cx="60" cy="60" r="36" fill="none" stroke="#4A8A6A" stroke-width="0.8"></circle><circle cx="60" cy="60" r="22" fill="none" stroke="#C8A830" stroke-width="0.6"></circle><ellipse cx="60" cy="18" rx="4" ry="11" fill="#C8A830" transform="rotate(0 60 60)"></ellipse><ellipse cx="60" cy="18" rx="4" ry="11" fill="#4A8A6A" transform="rotate(45 60 60)"></ellipse><ellipse cx="60" cy="18" rx="4" ry="11" fill="#C8A830" transform="rotate(90 60 60)"></ellipse><ellipse cx="60" cy="18" rx="4" ry="11" fill="#4A8A6A" transform="rotate(135 60 60)"></ellipse><ellipse cx="60" cy="18" rx="4" ry="11" fill="#C8A830" transform="rotate(180 60 60)"></ellipse><ellipse cx="60" cy="18" rx="4" ry="11" fill="#4A8A6A" transform="rotate(225 60 60)"></ellipse><ellipse cx="60" cy="18" rx="4" ry="11" fill="#C8A830" transform="rotate(270 60 60)"></ellipse><ellipse cx="60" cy="18" rx="4" ry="11" fill="#4A8A6A" transform="rotate(315 60 60)"></ellipse><circle cx="60" cy="60" r="4" fill="#C8A830"></circle></svg></div><div class="kb-pl-names"><span>Subha</span><span class="kb-pl-weds">weds</span><span>Sidharth</span></div></div></div><div class="kb-hero-wrap" id="heroWrap">
+  <div class="kb-hero-pin" id="heroPin">
+    <!-- 3D Video Parallax Stage -->
+    <div class="kb-hero-video-stage">
+      <video id="heroVideo" class="kb-hero-video" src="assets/hero-video.mp4" playsinline autoplay muted loop preload="auto"></video>
+      <div class="kb-hero-video-gradient"></div>
+    </div>
+
+    <!-- 3D Floating Typography Content Layer -->
+    <div id="heroCopy" class="kb-hero-copy">
+      <span class="kb-hc-eyebrow">॥ ശ്രീ ഗുരുവായൂരപ്പൻ തുണ ॥</span>
+      <p class="kb-hc-motto">“Two families, one sacred thread, countless blessings.”</p>
+      
+      <div class="kb-hc-names-wrap">
+        <h1 class="kb-hc-bride">Subha</h1>
+        <div class="kb-hc-weds">weds</div>
+        <h1 class="kb-hc-groom">Sidharth</h1>
+      </div>
+
+      <div class="kb-hc-date-card">
+        <div class="kb-hc-cal-box">
+          <span class="kb-hc-cal-day">WEDNESDAY</span>
+          <span class="kb-hc-cal-num">11</span>
+          <span class="kb-hc-cal-month">NOV 2026</span>
+        </div>
+        <div class="kb-hc-loc-box">
+          <div class="kb-hc-time-badge">⏱ 10:00 AM IST</div>
+          <div class="kb-hc-venue-title">GURUVAYUR AMBALA NADA</div>
+          <div class="kb-hc-venue-sub">Guruvayur, Thrissur, Kerala</div>
+        </div>
+      </div>
+
+      <div class="kb-hc-actions">
+        <a href="#invitation-card" class="kb-hc-btn-card">📜 View Invitation Card</a>
+        <a href="https://maps.google.com/?q=Guruvayur+Ambala+Nada+Kerala" target="_blank" rel="noopener" class="kb-hc-btn-map">📍 Temple Map</a>
+      </div>
+    </div>
+
+    <div id="scrollNudge" class="kb-scroll-nudge">
+      <span>Scroll to Enter</span>
+      <div class="kb-sn-line"><div class="kb-sn-dot"></div></div>
+    </div>
+  </div>
+</div>
+<div class="kb-lamp-stage">
+  <div class="kb-ls-glow kb-ls-glow-1" style="opacity:0"></div>
+  <div class="kb-ls-glow kb-ls-glow-2" style="opacity:0"></div>
+  <canvas class="kb-ls-sparks"></canvas>
+  <div class="kb-container">
+    <div class="kb-s-head" style="margin-bottom:40px">
+      <span class="kb-sh-eye" style="color:rgba(200, 168, 48, 0.85)">Subha &amp; Sidharth</span>
+      <h2 class="kb-sh-h" style="color:#F4EDD0">Lighting the <em>Nilavilakku</em></h2>
+      <p class="text-[#FAF3E8]/70 max-w-[540px] mx-auto mt-4 font-serif italic text-base text-center">A sacred lamp, two hearts, and the blessing of Guruvayurappan. Scroll to light the vilakku as we welcome you to our wedding day.</p>
+    </div>
+    <div class="kb-lamp-couple">
+      <img src="assets/images/couple/main.jpg" alt="Subha and Sidharth holding wedding rings"/>
+      <div class="kb-lamp-couple-caption">Subha &amp; Sidharth</div>
+    </div>
+    <div class="kb-ls-lamps">
+      <div class="kb-ls-lamp">
+        <div class="kb-lamp-img-wrap">
+          <img class="kb-lamp-unlit" src="assets/templates/kerala-backwaters/elements/Element_lamp_1.png" alt="Traditional brass lamp"/>
+          <img class="kb-lamp-lit" src="assets/templates/kerala-backwaters/elements/Element_lamp_2.png" alt="Lit traditional brass lamp"/>
+          <div class="kb-flame-wrap">
+            <img class="kb-fire-1" src="assets/templates/kerala-backwaters/elements/Element_fire_1.png" alt="Flame"/>
+            <img class="kb-fire-2" src="assets/templates/kerala-backwaters/elements/Element_fire_2.png" alt="Flame secondary"/>
+            <img class="kb-glow-orb" src="assets/templates/kerala-backwaters/elements/Element_glow.png" alt="Light Glow"/>
+          </div>
+        </div>
+      </div>
+      <div class="kb-ls-lamp kb-ls-lamp--centre">
+        <div class="kb-lamp-img-wrap">
+          <img class="kb-lamp-unlit" src="assets/templates/kerala-backwaters/elements/Element_lamp_1.png" alt="Traditional brass lamp"/>
+          <img class="kb-lamp-lit" src="assets/templates/kerala-backwaters/elements/Element_lamp_2.png" alt="Lit traditional brass lamp"/>
+          <div class="kb-flame-wrap">
+            <img class="kb-fire-1" src="assets/templates/kerala-backwaters/elements/Element_fire_1.png" alt="Flame"/>
+            <img class="kb-fire-2" src="assets/templates/kerala-backwaters/elements/Element_fire_2.png" alt="Flame secondary"/>
+            <img class="kb-glow-orb" src="assets/templates/kerala-backwaters/elements/Element_glow.png" alt="Light Glow"/>
+          </div>
+        </div>
+      </div>
+      <div class="kb-ls-lamp">
+        <div class="kb-lamp-img-wrap">
+          <img class="kb-lamp-unlit" src="assets/templates/kerala-backwaters/elements/Element_lamp_1.png" alt="Traditional brass lamp"/>
+          <img class="kb-lamp-lit" src="assets/templates/kerala-backwaters/elements/Element_lamp_2.png" alt="Lit traditional brass lamp"/>
+          <div class="kb-flame-wrap">
+            <img class="kb-fire-1" src="assets/templates/kerala-backwaters/elements/Element_fire_1.png" alt="Flame"/>
+            <img class="kb-fire-2" src="assets/templates/kerala-backwaters/elements/Element_fire_2.png" alt="Flame secondary"/>
+            <img class="kb-glow-orb" src="assets/templates/kerala-backwaters/elements/Element_glow.png" alt="Light Glow"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<section id="invite" class="kb-section select-none"><img class="absolute top-[8%] right-[2%] w-[100px] opacity-10 mix-blend-multiply pointer-events-none" src="assets/templates/kerala-backwaters/elements/Element%203.png" alt=""/><img class="absolute bottom-[10%] left-[1%] w-[80px] opacity-15 mix-blend-multiply pointer-events-none" src="assets/templates/kerala-backwaters/elements/Element%204.png" alt=""/><img class="absolute bottom-[8%] right-[1%] w-[70px] opacity-15 mix-blend-multiply pointer-events-none" src="assets/templates/kerala-backwaters/elements/Element%205.png" alt=""/><div class="absolute top-0 left-0 right-0 h-[140px] pointer-events-none z-1"><img src="assets/templates/kerala-backwaters/backgrounds/Background%204.png" alt="" loading="lazy" decoding="async" class="w-full h-full object-cover object-top opacity-60 animate-[toranSway_12s_ease-in-out_infinite]"/></div><div class="kb-container pt-[80px]"><div class="kb-invite-card vis" id="invitation-card">
+        <div class="kb-card-ornament kb-card-ornament-tl"><svg viewBox="0 0 52 52" class="w-[40px] h-[40px]"><path d="M6,46 Q24,-6 48,14" fill="none" stroke="#C8A830" stroke-width="0.8"></path></svg></div>
+        <div class="kb-card-ornament kb-card-ornament-tr"><svg viewBox="0 0 52 52" class="w-[40px] h-[40px]"><path d="M6,46 Q24,-6 48,14" fill="none" stroke="#C8A830" stroke-width="0.8"></path></svg></div>
+        
+        <div class="kb-ganesha-wrap">
+          <img class="kb-ganesha-img" src="assets/templates/kerala-backwaters/elements/Element%206.png" alt="Ganapati" loading="lazy" decoding="async"/>
+        </div>
+
+        <p class="font-serif italic text-xl md:text-2xl text-[#0E2218] font-medium tracking-wide mb-2">
+          “Two families, one sacred thread, countless blessings.”
+        </p>
+
+        <div class="kb-sh-line-wrap drawn my-3">
+          <svg class="kb-sh-line-svg" viewBox="0 0 320 14" width="280" height="14">
+            <path class="kb-sh-leaf-path" d="M10,7 L310,7" fill="none" stroke="#C8A830" stroke-width="1.2"></path>
+            <rect class="kb-sh-diamond" x="157" y="4" width="6" height="6" fill="#C8A830"></rect>
+          </svg>
+        </div>
+
+        <p class="kb-i-label text-xs uppercase tracking-[0.2em] text-[#4A8A6A] font-bold">
+          TOGETHER WITH OUR FAMILIES WE CORDIALLY INVITE YOU TO THE WEDDING OF
+        </p>
+
+        <div class="kb-i-names font-serif italic text-4xl md:text-5xl my-4 text-[#0E2218]">
+          <span>Subha</span>
+          <span class="kb-i-amp">&amp;</span>
+          <span>Sidharth</span>
+        </div>
+
+        <!-- Parents Lineage & Addresses (Direct from Invitation Card) -->
+        <div class="kb-i-fam mt-6 grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+          <div class="p-4 bg-[#f8f4e4]/80 rounded-xl border border-[#C8A830]/30 shadow-sm">
+            <span class="text-[#C8A830] font-sans font-bold text-xs uppercase tracking-wider block mb-1">BRIDE'S PARENTS</span>
+            <h4 class="font-serif text-xl font-bold text-[#0E2218]">Kalaiselvi &amp; Letchumegandan</h4>
+            <div class="text-xs text-[#0E2218]/75 mt-2 font-sans leading-relaxed">
+              18/42, Ezhumuram<br>
+              MT Nagar Post, Gudalur<br>
+              The Nilgiris — 643211
+            </div>
+          </div>
+
+          <div class="p-4 bg-[#f8f4e4]/80 rounded-xl border border-[#C8A830]/30 shadow-sm">
+            <span class="text-[#C8A830] font-sans font-bold text-xs uppercase tracking-wider block mb-1">GROOM'S PARENTS</span>
+            <h4 class="font-serif text-xl font-bold text-[#0E2218]">Suseela &amp; Padmanabamn</h4>
+            <div class="text-xs text-[#0E2218]/75 mt-2 font-sans leading-relaxed">
+              81B, Vinayager Koil Street<br>
+              Velandipalayam<br>
+              Coimbatore — 641025
+            </div>
+          </div>
+        </div>
+
+        <!-- Date & Venue Highlights -->
+        <div class="mt-8 pt-6 border-t border-[#C8A830]/30 grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+          <div class="p-4 bg-[#f4edd0]/60 rounded-xl border border-[#C8A830]/25">
+            <span class="text-xs text-[#4A8A6A] font-bold uppercase tracking-wider block">Muhurtham Date</span>
+            <strong class="font-serif text-lg text-[#0E2218] block mt-1">Wednesday, 11 Nov 2026</strong>
+          </div>
+          <div class="p-4 bg-[#f4edd0]/60 rounded-xl border border-[#C8A830]/25">
+            <span class="text-xs text-[#4A8A6A] font-bold uppercase tracking-wider block">Auspicious Time</span>
+            <strong class="font-serif text-lg text-[#0E2218] block mt-1">10.00 AM IST</strong>
+          </div>
+          <div class="p-4 bg-[#f4edd0]/60 rounded-xl border border-[#C8A830]/25">
+            <span class="text-xs text-[#4A8A6A] font-bold uppercase tracking-wider block">Sacred Venue</span>
+            <strong class="font-serif text-lg text-[#0E2218] block mt-1">GURUVAYUR AMBALA NADA</strong>
+            <span class="text-xs text-[#0E2218]/70 block">Guruvayur, Kerala</span>
+          </div>
+        </div>
+
+        <!-- Best Compliments From (Extracted from Invitation Card) -->
+        <div class="mt-6 p-4 bg-[#f4edd0]/50 rounded-xl border border-[#C8A830]/30 text-center">
+          <span class="text-xs uppercase tracking-[0.2em] text-[#C8A830] font-bold block mb-1.5">With Best Compliments From</span>
+          <p class="font-serif text-sm md:text-base text-[#0E2218]/85 leading-relaxed font-medium">
+            Ashok &nbsp;|&nbsp; Skyhigh Structure &nbsp;|&nbsp; CMM Studios &nbsp;|&nbsp; Team Flex &nbsp;|&nbsp; Vazhukkal Studios &nbsp;|&nbsp; M5 Motors &nbsp;|&nbsp; Gunalan and Friends
+          </p>
+        </div>
+
+        <!-- View Original Printed Invitation Modal Button -->
+        <div class="mt-6 flex justify-center">
+          <button type="button" id="btn-view-card-modal" class="kb-pill-btn" style="background:#0E2218; border-color:#C8A830; color:#F4EDD0; padding:10px 24px;">
+            📜 View Original Printed Invitation Card
+          </button>
+        </div>
+</div></div></section><div class="kb-story-section"><div class="kb-st-stage"><div class="kb-st-paper-bg"></div><div class="kb-st-curtains"><div class="kb-st-curt kb-st-curt-l" style="transform:none"><img loading="lazy" decoding="async" class="kb-st-curt-img" src="assets/templates/kerala-backwaters/elements/Element_Curtain.png" alt="Curtain Left"/></div><div class="kb-st-curt kb-st-curt-r" style="transform:none"><img loading="lazy" decoding="async" class="kb-st-curt-img" src="assets/templates/kerala-backwaters/elements/Element_Curtain.png" alt="Curtain Right"/></div></div><div class="kb-st-figure kb-st-bride" style="transform:none"><img src="assets/templates/kerala-backwaters/elements/Element_Bride.png" alt="Bride Illustration" loading="lazy" decoding="async"/></div><div class="kb-st-figure kb-st-groom" style="transform:none"><img src="assets/templates/kerala-backwaters/elements/Element_Groom.png" alt="Groom Illustration" loading="lazy" decoding="async"/></div><div class="kb-st-reveal"><div class="kb-st-mandala"><svg viewBox="0 0 100 100" class="w-full h-full"><circle cx="50" cy="50" r="45" fill="none" stroke="rgba(74, 138, 106, 0.4)" stroke-width="0.5"></circle><circle cx="50" cy="50" r="35" fill="none" stroke="rgba(200, 168, 48, 0.3)" stroke-width="0.5"></circle><line x1="50" y1="5" x2="50" y2="95" stroke="rgba(74, 138, 106, 0.3)" stroke-width="0.3"></line><line x1="5" y1="50" x2="95" y2="50" stroke="rgba(74, 138, 106, 0.3)" stroke-width="0.3"></line></svg></div><div class="kb-st-content-box "><span class="kb-sh-eye">Our Love Journey</span><h2 class="kb-st-names">Subha<!-- --> &amp; <!-- -->Sidharth</h2><p class="kb-st-text">Two families, one sacred thread, and countless blessings. Our journey bridges the misty tea hills of The Nilgiris with the vibrant city of Coimbatore, united in love and devotion before Lord Guruvayurappan. From quiet conversations to shared dreams of a lifetime together, our hearts found home in each other. With the loving blessings of our parents and elders, we joyfully invite you to witness our sacred Kalyanam at Guruvayur Ambala Nada.</p><div class="kb-st-tags"><span class="kb-st-tag">The Nilgiris to Coimbatore</span><span class="kb-st-tag">Guruvayurappan Blessings</span><span class="kb-st-tag">Sacred Kalyanam</span><span class="kb-st-tag">One Sacred Wedding</span></div></div></div></div></div><section id="events" class="kb-section kb-events-section">
+  <div class="kb-jasmine-petal-canvas"></div>
+  <div class="kb-container">
+    <div class="kb-s-head kb-section--dark">
+      <span class="kb-sh-eye">The Wedding</span>
+      <h2 class="kb-sh-h">Our <em>Kalyanam</em></h2>
+      <div class="kb-sh-line-wrap drawn">
+        <svg class="kb-sh-line-svg" viewBox="0 0 320 14" width="280" height="14">
+          <path class="kb-sh-leaf-path" d="M10,7 L310,7" fill="none" stroke="#C8A830" stroke-width="1.2"></path>
+          <rect class="kb-sh-diamond" x="157" y="4" width="6" height="6" fill="#C8A830"></rect>
+        </svg>
+      </div>
+    </div>
+    <div class="kb-single-event">
+      <div class="kb-ev-card">
+        <div class="kb-ev-icon-container"><span>💍</span></div>
+        <span class="kb-ev-time">Wednesday, 11 November 2026 · 10:00 AM IST</span>
+        <h3 class="kb-ev-title">Shubh Muhurtham — Wedding</h3>
+        <p class="kb-ev-venue">📍 Guruvayur Ambala Nada, Guruvayur, Kerala</p>
+        <p class="kb-ev-desc">Join us as we take our vows before Lord Guruvayurappan. This is a wedding-only celebration — we look forward to sharing the muhurtham with you.</p>
+        <div class="kb-ev-links">
+          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Subha%20weds%20Sidharth&amp;dates=20261111T043000Z/20261111T073000Z&amp;location=Guruvayur%20Ambala%20Nada%2C%20Guruvayur%2C%20Kerala" target="_blank" rel="noopener noreferrer" class="kb-ev-maplink"><svg width="16" height="16" viewBox="0 0 48 48" class="w-[14px] h-[14px] fill-current" aria-hidden="true" focusable="false"><rect width="22" height="22" x="13" y="13" fill="#fff"></rect><polygon fill="#1e88e5" points="25.68,20.92 26.688,22.36 28.272,21.208 28.272,29.56 30,29.56 30,18.616 28.56,18.616"></polygon><path fill="#fbc02d" d="M22.943,23.745c0.625-0.574,1.013-1.37,1.013-2.249c0-1.747-1.533-3.168-3.417-3.168 c-1.602,0-2.972,1.009-3.33,2.453l1.657,0.421c0.165-0.664,0.868-1.146,1.673-1.146c0.942,0,1.709,0.646,1.709,1.44 c0,0.794-0.767,1.44-1.709,1.44h-0.997v1.728h0.997c1.081,0,1.993,0.751,1.993,1.64c0,0.904-0.866,1.64-1.931,1.64 c-0.962,0-1.784-0.61-1.914-1.418l-1.682,0.276c0.262,1.636,1.81,2.87,3.597,2.87c2.007,0,3.64-1.511,3.64-3.368 C25.6,25.523,24.523,24.241,22.943,23.745z"></path><polygon fill="#fbc02d" points="34,42 14,42 13,38 14,34 34,34 35,38"></polygon><polygon fill="#4caf50" points="38,35 42,34 42,14 38,13 34,14 35,34"></polygon><path fill="#1e88e5" d="M34,14l1-4l-1-4H9C7.343,6,6,7.343,6,9v25l4,1l4-1V14H34z"></path><polygon fill="#e53935" points="34,34 34,42 42,34"></polygon><path fill="#1565c0" d="M39,6h-5v8h8V9C42,7.343,40.657,6,39,6z"></path><path fill="#1565c0" d="M9,42h5v-8H6v5C6,40.657,7.343,42,9,42z"></path></svg><span>Google Calendar</span></a>
+          <a href="https://maps.google.com/?q=Guruvayur+Ambala+Nada+Kerala" target="_blank" rel="noopener noreferrer" class="kb-ev-maplink"><svg width="16" height="16" viewBox="0 0 24 24" class="w-[14px] h-[14px] fill-current" aria-hidden="true" focusable="false"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="#EA4335"></path><circle cx="12" cy="9" r="2.6" fill="#fff"></circle></svg><span>Temple Map</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section><section id="gallery" class="kb-section select-none">
+  <div class="kb-container">
+    <div class="kb-s-head">
+      <span class="kb-sh-eye">Shared Memories</span>
+      <h2 class="kb-sh-h">Our <em>Gallery</em></h2>
+      <div class="kb-sh-line-wrap drawn">
+        <svg class="kb-sh-line-svg" viewBox="0 0 320 14" width="280" height="14">
+          <path class="kb-sh-leaf-path" d="M10,7 L310,7" fill="none" stroke="#C8A830" stroke-width="1.2"></path>
+          <rect class="kb-sh-diamond" x="157" y="4" width="6" height="6" fill="#C8A830"></rect>
+        </svg>
+      </div>
+    </div>
+    <div class="kb-gallery-grid">
+      <div class="kb-gal-item" data-full="assets/images/couple/BRB_0073.jpg" style="cursor:zoom-in"><img class="kb-gal-frame" src="assets/templates/kerala-backwaters/frames/kasavu-frame.png" alt="" loading="lazy" decoding="async"/><div class="kb-gal-img-wrap"><img class="kb-gal-img" src="assets/images/couple/BRB_0073.jpg" alt="Subha and Sidharth in jasmine garlands" loading="lazy" decoding="async"/></div></div>
+      <div class="kb-gal-item" data-full="assets/images/couple/BRB_8631.jpg" style="cursor:zoom-in"><img class="kb-gal-frame" src="assets/templates/kerala-backwaters/frames/kasavu-frame.png" alt="" loading="lazy" decoding="async"/><div class="kb-gal-img-wrap"><img class="kb-gal-img" src="assets/images/couple/BRB_8631.jpg" alt="Subha and Sidharth smiling together" loading="lazy" decoding="async"/></div></div>
+      <div class="kb-gal-item kb-gal-item--wide" data-full="assets/images/couple/BRB_9221.jpg" style="cursor:zoom-in"><img class="kb-gal-frame" src="assets/templates/kerala-backwaters/frames/kasavu-frame.png" alt="" loading="lazy" decoding="async"/><div class="kb-gal-img-wrap"><img class="kb-gal-img" src="assets/images/couple/BRB_9221.jpg" alt="Subha and Sidharth forehead to forehead" loading="lazy" decoding="async"/></div></div>
+      <div class="kb-gal-item kb-gal-item--wide" data-full="assets/images/couple/BRB_9617.jpg" style="cursor:zoom-in"><img class="kb-gal-frame" src="assets/templates/kerala-backwaters/frames/kasavu-frame.png" alt="" loading="lazy" decoding="async"/><div class="kb-gal-img-wrap"><img class="kb-gal-img" src="assets/images/couple/BRB_9617.jpg" alt="Sidharth lifting Subha among palm trees" loading="lazy" decoding="async"/></div></div>
+      <div class="kb-gal-item" data-full="assets/images/couple/BRB_9883.jpg" style="cursor:zoom-in"><img class="kb-gal-frame" src="assets/templates/kerala-backwaters/frames/kasavu-frame.png" alt="" loading="lazy" decoding="async"/><div class="kb-gal-img-wrap"><img class="kb-gal-img" src="assets/images/couple/BRB_9883.jpg" alt="Subha resting on Sidharth's shoulder" loading="lazy" decoding="async"/></div></div>
+      <div class="kb-gal-item" data-full="assets/images/couple/BRB_9964.jpg" style="cursor:zoom-in"><img class="kb-gal-frame" src="assets/templates/kerala-backwaters/frames/kasavu-frame.png" alt="" loading="lazy" decoding="async"/><div class="kb-gal-img-wrap"><img class="kb-gal-img" src="assets/images/couple/BRB_9964.jpg" alt="Subha and Sidharth seated among coconut palms" loading="lazy" decoding="async"/></div></div>
+      <div class="kb-gal-item kb-gal-item--wide" data-full="assets/images/couple/main.jpg" style="cursor:zoom-in"><img class="kb-gal-frame" src="assets/templates/kerala-backwaters/frames/kasavu-frame.png" alt="" loading="lazy" decoding="async"/><div class="kb-gal-img-wrap"><img class="kb-gal-img" src="assets/images/couple/main.jpg" alt="Subha and Sidharth holding their wedding rings" loading="lazy" decoding="async"/></div></div>
+    </div>
+  </div>
+</section><section id="things" class="kb-section bg-[#FDFBF7]">
+  <div class="kb-container">
+    <div class="kb-s-head">
+      <span class="kb-sh-eye">Important Details</span>
+      <h2 class="kb-sh-h">Things to <em>Know</em></h2>
+      <div class="kb-sh-line-wrap drawn">
+        <svg class="kb-sh-line-svg" viewBox="0 0 320 14" width="280" height="14">
+          <path class="kb-sh-leaf-path" d="M10,7 L310,7" fill="none" stroke="#C8A830" stroke-width="1.2"></path>
+          <rect class="kb-sh-diamond" x="157" y="4" width="6" height="6" fill="#C8A830"></rect>
+        </svg>
+      </div>
+    </div>
+    <div class="kb-things-grid">
+      <div class="kb-thing-card"><div class="kb-thing-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path></svg></div><h3 class="kb-thing-title">Dress Code</h3><p class="kb-thing-value">Traditional festive wear — kasavu, silk sarees, dhotis, or modest temple-appropriate attire for Guruvayur.</p></div>
+      <div class="kb-thing-card"><div class="kb-thing-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path></svg></div><h3 class="kb-thing-title">Travel by Bus</h3><p class="kb-thing-value">Everyone travelling with us will be taken to Guruvayur by bus. There is no separate shuttle or parking arrangement — please join the group transport.</p></div>
+      <div class="kb-thing-card"><div class="kb-thing-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path></svg></div><h3 class="kb-thing-title">Stay</h3><p class="kb-thing-value">Rooms are already booked for all guests travelling with us. You do not need to arrange your own stay.</p></div>
+      <div class="kb-thing-card"><div class="kb-thing-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path></svg></div><h3 class="kb-thing-title">The Celebration</h3><p class="kb-thing-value">This is a wedding-only muhurtham at Guruvayur Ambala Nada. There is no nischayam, sadhya function, or reception.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Traditional Auspicious Closing Banner -->
+<div class="py-16 text-center border-t border-[#c8a830]/25 bg-[#FAF7F0]">
+  <div class="text-[#c8a830] text-sm tracking-[0.25em] uppercase font-bold mb-2">॥ ശ്രീ ഗുരുവായൂരപ്പൻ തുണ ॥</div>
+  <div class="font-serif italic text-3xl text-[#0E2218]">Subha &amp; Sidharth</div>
+  <div class="text-xs text-[#0E2218]/65 mt-2 font-sans tracking-wider uppercase">Wednesday, 11 November 2026 · Guruvayur Ambala Nada, Kerala</div>
+</div>
+
+<script>
+    // 1. Dynamic Personalized Guest Name Reader
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const guestParam = urlParams.get('guest') || urlParams.get('to') || urlParams.get('name');
+      if (guestParam && guestParam.trim()) {
+        const decodedGuest = decodeURIComponent(guestParam.trim());
+        const eyebrow = document.querySelector('.kb-hc-eyebrow');
+        if (eyebrow) {
+          eyebrow.textContent = '॥ Welcome ' + decodedGuest + ' ॥';
+        }
+      }
+    } catch (e) {
+      console.warn('URL param reading:', e);
+    }
+
+    // 2. Guaranteed Preloader Dismissal
+    function dismissPreloader() {
+      const preloader = document.querySelector('.kb-preloader');
+      if (preloader) {
+        preloader.classList.add('away');
+        preloader.style.opacity = '0';
+        preloader.style.visibility = 'hidden';
+        preloader.style.pointerEvents = 'none';
+        setTimeout(() => { preloader.style.display = 'none'; }, 800);
+      }
+    }
+
+    if (document.readyState === 'complete') {
+      setTimeout(dismissPreloader, 600);
+    } else {
+      window.addEventListener('load', () => setTimeout(dismissPreloader, 600));
+      document.addEventListener('DOMContentLoaded', () => setTimeout(dismissPreloader, 1000));
+    }
+    setTimeout(dismissPreloader, 2200);
+
+    const preloaderEl = document.querySelector('.kb-preloader');
+    if (preloaderEl) {
+      preloaderEl.addEventListener('click', dismissPreloader);
+    }
+
+    // 3. 3D Video Parallax Scroll Controller
+    const heroWrap = document.querySelector('.kb-hero-wrap');
+    const heroVideo = document.getElementById('heroVideo');
+    const heroCopy = document.getElementById('heroCopy');
+    const scrollNudge = document.getElementById('scrollNudge');
+
+    let targetVideoTime = 0;
+    let currentVideoTime = 0;
+
+    window.addEventListener('scroll', () => {
+      if (!heroWrap) return;
+      const scrollY = window.scrollY;
+      const heroHeight = heroWrap.offsetHeight;
+      const maxScroll = heroHeight - window.innerHeight;
+      const progress = Math.min(Math.max(scrollY / (maxScroll || 1), 0), 1);
+
+      // 3D Parallax Video Depth Scrubbing & Pitch Tilt
+      if (heroVideo) {
+        const scale = 1.02 + progress * 0.32;
+        const translateY = progress * 65;
+        const rotateX = progress * 7.5;
+        const translateZ = progress * 45;
+        heroVideo.style.transform = 'perspective(1000px) scale(' + scale + ') translateY(' + translateY + 'px) rotateX(' + rotateX + 'deg) translateZ(' + translateZ + 'px)';
+
+        if (heroVideo.duration && !isNaN(heroVideo.duration)) {
+          targetVideoTime = progress * heroVideo.duration;
+        }
+      }
+
+      // 3D Floating Typography Transform
+      if (heroCopy) {
+        const copyOpacity = Math.max(1 - progress * 2.2, 0);
+        const copyY = progress * 95;
+        const copyScale = 1 - progress * 0.12;
+        heroCopy.style.opacity = copyOpacity;
+        heroCopy.style.transform = 'perspective(1000px) translateY(' + copyY + 'px) scale(' + copyScale + ') translateZ(35px)';
+        heroCopy.style.pointerEvents = copyOpacity <= 0.05 ? 'none' : 'auto';
+      }
+
+      if (scrollNudge) {
+        scrollNudge.style.opacity = Math.max(1 - progress * 4.5, 0);
+      }
+    }, { passive: true });
+
+    function loopVideoScrub() {
+      if (heroVideo && heroVideo.duration && Math.abs(currentVideoTime - targetVideoTime) > 0.04) {
+        currentVideoTime += (targetVideoTime - currentVideoTime) * 0.18;
+        heroVideo.currentTime = currentVideoTime;
+      }
+      requestAnimationFrame(loopVideoScrub);
+    }
+    requestAnimationFrame(loopVideoScrub);
+
+    // Card Modal Handlers
+    const cardModal = document.getElementById('card-modal');
+    const btnOpenCard = document.getElementById('btn-view-card-modal');
+    const btnCloseCard = document.getElementById('btn-close-card');
+
+    if (btnOpenCard && cardModal) {
+      btnOpenCard.addEventListener('click', () => { cardModal.classList.add('active'); });
+    }
+    if (btnCloseCard && cardModal) {
+      btnCloseCard.addEventListener('click', () => { cardModal.classList.remove('active'); });
+      cardModal.addEventListener('click', (e) => {
+        if (e.target === cardModal) cardModal.classList.remove('active');
+      });
+    }
+
+    // 4. Lighting the Nilavilakku (Sacred Brass Lamp Stage)
+    const lampStage = document.querySelector('.kb-lamp-stage');
+    const lamps = document.querySelectorAll('.kb-ls-lamp');
+    const glow1 = document.querySelector('.kb-ls-glow-1');
+    const glow2 = document.querySelector('.kb-ls-glow-2');
+
+    function checkLampLighting() {
+      if (!lampStage) return;
+      const rect = lampStage.getBoundingClientRect();
+      const inView = rect.top < window.innerHeight * 0.65 && rect.bottom > window.innerHeight * 0.2;
+
+      if (inView) {
+        lamps.forEach((lamp, idx) => {
+          setTimeout(() => {
+            lamp.classList.add('lit');
+          }, idx * 250);
+        });
+        if (glow1) glow1.style.opacity = '0.85';
+        if (glow2) glow2.style.opacity = '0.85';
+      }
+    }
+    window.addEventListener('scroll', checkLampLighting, { passive: true });
+    checkLampLighting();
+
+    // 5. Golden Ember Sparks Particle Simulation in Lamp Stage
+    const sparksCanvas = document.querySelector('.kb-ls-sparks');
+    if (sparksCanvas) {
+      const sCtx = sparksCanvas.getContext('2d');
+      let sWidth = sparksCanvas.width = sparksCanvas.offsetWidth || window.innerWidth;
+      let sHeight = sparksCanvas.height = sparksCanvas.offsetHeight || 500;
+
+      window.addEventListener('resize', () => {
+        sWidth = sparksCanvas.width = sparksCanvas.offsetWidth || window.innerWidth;
+        sHeight = sparksCanvas.height = sparksCanvas.offsetHeight || 500;
+      });
+
+      const sparks = [];
+      for (let i = 0; i < 35; i++) {
+        sparks.push({
+          x: Math.random() * sWidth,
+          y: Math.random() * sHeight,
+          radius: Math.random() * 2.2 + 0.8,
+          speedY: Math.random() * 1.5 + 0.5,
+          speedX: Math.random() * 1 - 0.5,
+          opacity: Math.random() * 0.7 + 0.3
+        });
+      }
+
+      function renderSparks() {
+        sCtx.clearRect(0, 0, sWidth, sHeight);
+        sparks.forEach(sp => {
+          sCtx.beginPath();
+          sCtx.arc(sp.x, sp.y, sp.radius, 0, Math.PI * 2);
+          sCtx.fillStyle = 'rgba(200, 168, 48, ' + sp.opacity + ')';
+          sCtx.shadowBlur = 8;
+          sCtx.shadowColor = '#FFD700';
+          sCtx.fill();
+
+          sp.y -= sp.speedY;
+          sp.x += sp.speedX;
+          if (sp.y < 0) {
+            sp.y = sHeight + 10;
+            sp.x = Math.random() * sWidth;
+          }
+        });
+        requestAnimationFrame(renderSparks);
+      }
+      renderSparks();
+    }
+
+    // 6. Our Story — Kerala Kasavu Curtains Parting
+    const storySection = document.querySelector('.kb-story-section');
+    const curtLeft = document.querySelector('.kb-st-curt-l');
+    const curtRight = document.querySelector('.kb-st-curt-r');
+    const storyBox = document.querySelector('.kb-st-content-box');
+    const brideFig = document.querySelector('.kb-st-bride');
+    const groomFig = document.querySelector('.kb-st-groom');
+
+    function checkCurtains() {
+      if (!storySection) return;
+      const rect = storySection.getBoundingClientRect();
+      const inView = rect.top < window.innerHeight * 0.75 && rect.bottom > 0;
+
+      if (inView) {
+        if (curtLeft) curtLeft.style.transform = 'translateX(-95%)';
+        if (curtRight) curtRight.style.transform = 'scaleX(-1) translateX(-95%)';
+        if (storyBox) storyBox.classList.add('revealed');
+        if (brideFig) brideFig.style.transform = 'translateX(0)';
+        if (groomFig) groomFig.style.transform = 'translateX(0)';
+      }
+    }
+    window.addEventListener('scroll', checkCurtains, { passive: true });
+    checkCurtains();
+
+    // 7. Timeline Event Cards Reveal
+    const eventCards = document.querySelectorAll('.kb-ev-card');
+    function checkEventCards() {
+      eventCards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.85) {
+          card.style.opacity = '1';
+          card.style.transform = 'translateX(0)';
+          card.style.transition = 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+        }
+      });
+    }
+    window.addEventListener('scroll', checkEventCards, { passive: true });
+    checkEventCards();
+
+    // 8. Jasmine Petals Simulation (Events Section)
+    const jasmineContainer = document.querySelector('.kb-jasmine-petal-canvas');
+    if (jasmineContainer) {
+      const jCanvas = document.createElement('canvas');
+      jCanvas.className = 'kb-jasmine-canvas-el';
+      jasmineContainer.appendChild(jCanvas);
+      const jCtx = jCanvas.getContext('2d');
+      let jWidth = jCanvas.width = jasmineContainer.offsetWidth || window.innerWidth;
+      let jHeight = jCanvas.height = jasmineContainer.offsetHeight || 800;
+
+      window.addEventListener('resize', () => {
+        jWidth = jCanvas.width = jasmineContainer.offsetWidth || window.innerWidth;
+        jHeight = jCanvas.height = jasmineContainer.offsetHeight || 800;
+      });
+
+      const petals = [];
+      for (let i = 0; i < 24; i++) {
+        petals.push({
+          x: Math.random() * jWidth,
+          y: Math.random() * jHeight,
+          size: Math.random() * 8 + 6,
+          speedY: Math.random() * 1.2 + 0.6,
+          speedX: Math.random() * 1 - 0.5,
+          angle: Math.random() * 360,
+          spin: Math.random() * 1.5 - 0.75,
+          opacity: Math.random() * 0.5 + 0.4
+        });
+      }
+
+      function renderJasmine() {
+        jCtx.clearRect(0, 0, jWidth, jHeight);
+        petals.forEach(p => {
+          jCtx.save();
+          jCtx.translate(p.x, p.y);
+          jCtx.rotate((p.angle * Math.PI) / 180);
+          jCtx.globalAlpha = p.opacity;
+
+          jCtx.beginPath();
+          jCtx.ellipse(0, 0, p.size * 0.5, p.size, 0, 0, Math.PI * 2);
+          jCtx.fillStyle = '#FFFFFF';
+          jCtx.shadowBlur = 4;
+          jCtx.shadowColor = 'rgba(200, 168, 48, 0.4)';
+          jCtx.fill();
+
+          jCtx.restore();
+
+          p.y += p.speedY;
+          p.x += p.speedX + Math.sin(p.y * 0.01) * 0.4;
+          p.angle += p.spin;
+
+          if (p.y > jHeight + 20) {
+            p.y = -20;
+            p.x = Math.random() * jWidth;
+          }
+        });
+        requestAnimationFrame(renderJasmine);
+      }
+      renderJasmine();
+    }
+
+    // 9. 3D PERSPECTIVE SCROLL & INTERACTIVE TILT FOR COUPLE GALLERY
+    const galItems = document.querySelectorAll('.kb-gal-item');
+
+    function update3dGalleryScroll() {
+      const windowH = window.innerHeight;
+      galItems.forEach(item => {
+        const rect = item.getBoundingClientRect();
+        if (rect.top < windowH && rect.bottom > 0) {
+          const itemCenter = rect.top + rect.height / 2;
+          const delta = (itemCenter - windowH / 2) / (windowH / 2);
+          const tiltX = Math.min(Math.max(-delta * 14, -18), 18);
+          const scale = 1 - Math.min(Math.abs(delta) * 0.04, 0.06);
+          item.style.transform = 'perspective(1000px) rotateX(' + tiltX.toFixed(2) + 'deg) scale(' + scale.toFixed(3) + ') translateZ(12px)';
+        }
+      });
+    }
+    window.addEventListener('scroll', update3dGalleryScroll, { passive: true });
+    update3dGalleryScroll();
+
+    // Mouse / Touch 3D Interactive Tilt Tracking
+    galItems.forEach(item => {
+      item.addEventListener('mousemove', (e) => {
+        const rect = item.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        const tiltX = -(y / (rect.height / 2)) * 12;
+        const tiltY = (x / (rect.width / 2)) * 12;
+        item.style.transform = 'perspective(1000px) rotateX(' + tiltX.toFixed(2) + 'deg) rotateY(' + tiltY.toFixed(2) + 'deg) scale(1.03) translateZ(24px)';
+      });
+
+      item.addEventListener('mouseleave', () => {
+        item.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1) translateZ(0)';
+      });
+    });
+
+    // 10. Lightbox for Couple Photos
+    const lightbox = document.getElementById('gallery-lightbox');
+    const lightboxImg = document.getElementById('gallery-lightbox-img');
+    galItems.forEach((item) => {
+      item.addEventListener('click', () => {
+        const src = item.getAttribute('data-full');
+        if (!src || !lightbox || !lightboxImg) return;
+        lightboxImg.src = src;
+        lightbox.classList.add('active');
+      });
+    });
+    if (lightbox) {
+      lightbox.addEventListener('click', () => lightbox.classList.remove('active'));
+    }
+  </script>
+
+  <!-- Physical Printed Card HD Preview Modal -->
+  <div class="kb-modal-backdrop" id="card-modal" role="dialog" aria-modal="true">
+    <div class="kb-modal-box" style="max-width: 920px; padding: 24px;">
+      <div class="flex justify-between items-center mb-4 pb-2 border-b border-[#C8A830]/30">
+        <div>
+          <h3 class="font-serif italic text-2xl text-[#0E2218]">Subha &amp; Sidharth — Wedding Invitation</h3>
+          <span class="text-xs text-[#4A8A6A] font-bold uppercase tracking-wider">Guruvayur Ambala Nada • 11 November 2026</span>
+        </div>
+        <button type="button" id="btn-close-card" class="text-3xl text-[#0E2218]/60 hover:text-[#0E2218] font-bold p-1 leading-none">&times;</button>
+      </div>
+      <div class="overflow-auto max-h-[76vh] rounded-lg border border-[#C8A830]/40 shadow-inner bg-[#fffbf2]">
+        <img src="assets/images/invitation-card-full.jpg" alt="Original Wedding Invitation Card of Subha &amp; Sidharth" class="w-full h-auto block">
+      </div>
+    </div>
+  </div>
+
+  <div class="kb-lightbox" id="gallery-lightbox" role="dialog" aria-modal="true">
+    <img id="gallery-lightbox-img" alt="Couple photo"/>
+  </div>
+</body>
+</html>
